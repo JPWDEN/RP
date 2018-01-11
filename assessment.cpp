@@ -35,6 +35,7 @@ bool Parser::ParseDirectory(string sInput)
 			sDir = sInput + '/';
 	}
 	DIR *dPath = opendir(sDir.c_str());
+	cout << "sDir:  " << sDir << endl;
 	if (dPath == NULL)
 	{
 		cout << "Error accessing directory" << endl;
