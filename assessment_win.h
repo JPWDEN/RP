@@ -30,9 +30,9 @@ public:
 	Parser();
 	~Parser();
 
-#ifdef __LINUX__
-	bool ParseDirectory(string sInput);		//Grab files from specified directory--Linux
-#elif _WIN32
+#ifdef _WIN32
+	bool ParseDirectoryWin(string sInput);		//Grab files from specified directory--Linux
+#else
 	bool ParseDirectoryWin(string sInput);	//Grab files from specified directory--Windows
 #endif
 	bool ParseFile();						//Process each file for requested data
