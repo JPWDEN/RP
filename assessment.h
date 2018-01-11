@@ -27,7 +27,7 @@ public:
 	Parser();
 	~Parser();
 
-	bool ParseDirectoryWin(string sInput);	//Grab files from specified directory--Windows
+	bool ParseDirectory(string sInput);	//Grab files from specified directory--Windows
 	bool ParseFile();						//Process each file for requested data
 	void PrintData();						//Print email data contained in memory
 
