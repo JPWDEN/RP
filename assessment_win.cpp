@@ -21,46 +21,8 @@ Parser::~Parser()
 	delete m_arEmailData;
 }
 
-#ifdef __LINUX__
+#ifdef _WIN32
 //Open each of the files in a directory and call ParseFile() for each file
-bool Parser::ParseDirectory(string sInput)
-{
-	string sDir;
-	m_outFile.open("log");
-	struct dirent *dirp;
-	struct stat fileStat;
-	if (sInput == "")
-		sDir = "smallset/";
-	else
-	{
-		if (sInput[sInput.size() - 1] != '/')
-			sDir = sInput + '/';
-	}
-	DIR *dPath = opendir(sDir.c_str());
-	if (dPath == NULL)
-	{
-		cout << "Error accessing directory" << endl;
-		return false;
-	}
-	while (dirp = readdir(dPath))
-	{
-		if (S_ISDIR(fileStat.st_mode) || dirp->d_name[0] == '.')
-			continue;
-		string sPath = sDir + dirp->d_name;
-		m_inFile.open(sPath.c_str());
-		if (m_inFile)
-		{
-			bool bSuccess = ParseFile();
-			if (!bSuccess)
-				cout << "Error parsing " << sPath << endl;
-			m_inFile.close();
-		}
-		else
-			cout << dirp->d_name  << " error:  " << strerror(errno) << endl;
-	}
-	return true;
-}
-#elif _WIN32
 //Open each of the files in a directory and call ParseFile() for each file
 //Return value only serves as a placeholder for further error-checking functionality
 bool Parser::ParseDirectoryWin(string sInput)
@@ -100,6 +62,44 @@ bool Parser::ParseDirectoryWin(string sInput)
 		}
 		else
 			cout << sDir << "Error" << endl;
+	}
+	return true;
+}
+#else
+bool Parser::ParseDirectory(string sInput)
+{
+	string sDir;
+	m_outFile.open("log");
+	struct dirent *dirp;
+	struct stat fileStat;
+	if (sInput == "")
+		sDir = "smallset/";
+	else
+	{
+		if (sInput[sInput.size() - 1] != '/')
+			sDir = sInput + '/';
+	}
+	DIR *dPath = opendir(sDir.c_str());
+	if (dPath == NULL)
+	{
+		cout << "Error accessing directory" << endl;
+		return false;
+	}
+	while (dirp = readdir(dPath))
+	{
+		if (S_ISDIR(fileStat.st_mode) || dirp->d_name[0] == '.')
+			continue;
+		string sPath = sDir + dirp->d_name;
+		m_inFile.open(sPath.c_str());
+		if (m_inFile)
+		{
+			bool bSuccess = ParseFile();
+			if (!bSuccess)
+				cout << "Error parsing " << sPath << endl;
+			m_inFile.close();
+		}
+		else
+			cout << dirp->d_name  << " error:  " << strerror(errno) << endl;
 	}
 	return true;
 }
