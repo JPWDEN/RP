@@ -191,12 +191,12 @@ int main(int argc, char *argv[])
 #ifdef _WIN32
 	bool bSuccess = rpParser.ParseDirectoryWin(sInput);
 #else
-	bool bSuccess = rpParser.ParseDirectoryWin(sInput);
+	bool bSuccess = rpParser.ParseDirectory(sInput);
 #endif
 	rpParser.PrintData();
 	cout << "Finished!";
-	if (!bSuccess)
-		cout << "  With errors..." << endl;	
+	//if (!bSuccess)
+	//	cout << "  With errors..." << endl;	
 
 	return 0;
 }
