@@ -5,10 +5,7 @@
 
 #include <fstream>
 #include <vector>
-#ifdef __linux__
 #include <dirent.h>
-#elif _WIN32
-#include <windows.h>
 #endif
 
 using namespace std;
@@ -30,11 +27,7 @@ public:
 	Parser();
 	~Parser();
 
-#ifdef _WIN32
-	bool ParseDirectoryWin(string sInput);		//Grab files from specified directory--Linux
-#else
 	bool ParseDirectoryWin(string sInput);	//Grab files from specified directory--Windows
-#endif
 	bool ParseFile();						//Process each file for requested data
 	void PrintData();						//Print email data contained in memory
 
