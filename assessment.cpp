@@ -28,7 +28,7 @@ bool Parser::ParseDirectory(string sInput)
 	struct dirent *dirp;
 	struct stat fileStat;
 	if (sInput == "")
-		sDir = "smallset/";
+		sDir = "/RP-master/smallset/";
 	else
 	{
 		if (sInput[sInput.size() - 1] != '/')
