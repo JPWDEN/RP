@@ -21,51 +21,6 @@ Parser::~Parser()
 	delete m_arEmailData;
 }
 
-#ifdef _WIN32
-//Open each of the files in a directory and call ParseFile() for each file
-//Open each of the files in a directory and call ParseFile() for each file
-//Return value only serves as a placeholder for further error-checking functionality
-bool Parser::ParseDirectoryWin(string sInput)
-{
-	string sDir;
-	m_outFile.open("log.log");
-	if (sInput == "")
-	{
-		TCHAR path[MAX_PATH];
-		GetCurrentDirectory(MAX_PATH, path);
-		sInput = path;
-		sInput += "\\smallset\\";
-	}
-	else
-	{
-		if (sInput[sInput.size() - 1] != '\\')
-			sInput = sInput + '\\';
-	}
-	sDir = sInput;
-	sInput += "*.*";
-	WIN32_FIND_DATA search_data;
-	HANDLE handle = FindFirstFile(sInput.c_str(), &search_data);
-	while (handle != INVALID_HANDLE_VALUE)
-	{
-		if (FindNextFile(handle, &search_data) == FALSE)
-			break;
-		if (search_data.cFileName[0] == '.')
-			continue;
-		string sPath = sDir + search_data.cFileName;
-		m_inFile.open(sPath);
-		if (m_inFile)
-		{
-			bool bSuccess = ParseFile();
-			if (!bSuccess)
-				cout << "Error parsing " << sPath << endl;
-			m_inFile.close();
-		}
-		else
-			cout << sDir << "Error" << endl;
-	}
-	return true;
-}
-#else
 bool Parser::ParseDirectory(string sInput)
 {
 	string sDir;
@@ -103,7 +58,6 @@ bool Parser::ParseDirectory(string sInput)
 	}
 	return true;
 }
-#endif
 
 //Parse info out of each file.  Maybe order of data can vary from server to server, so
 //remain generic about the order of information in the header.  Returns false if a given field was not found
@@ -188,11 +142,7 @@ int main(int argc, char *argv[])
 	string sInput = "";
 	if (argc == 2)
 		sInput = string(argv[1]);
-#ifdef _WIN32
-	rpParser.ParseDirectoryWin(sInput);
-#else
 	rpParser.ParseDirectory(sInput);
-#endif
 	rpParser.PrintData();
 	cout << "Finished!";
 
