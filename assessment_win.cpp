@@ -188,9 +188,9 @@ int main(int argc, char *argv[])
 	string sInput = "";
 	if (argc == 2)
 		sInput = string(argv[1]);
-#ifdef __LINUX__
-	bool bSuccess = rpParser.ParseDirectory(sInput);
-#elif _WIN32
+#ifdef _WIN32
+	bool bSuccess = rpParser.ParseDirectoryWin(sInput);
+#else
 	bool bSuccess = rpParser.ParseDirectoryWin(sInput);
 #endif
 	rpParser.PrintData();
