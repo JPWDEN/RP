@@ -24,7 +24,7 @@ Parser::~Parser()
 bool Parser::ParseDirectory(string sInput)
 {
 	string sDir;
-	m_outFile.open("log");
+	m_outFile.open("/RP-master/log");
 	struct dirent *dirp;
 	struct stat fileStat;
 	if (sInput == "")
@@ -35,7 +35,6 @@ bool Parser::ParseDirectory(string sInput)
 			sDir = sInput + '/';
 	}
 	DIR *dPath = opendir(sDir.c_str());
-	cout << "sDir:  " << sDir << endl;
 	if (dPath == NULL)
 	{
 		cout << "Error accessing directory" << endl;
