@@ -6,7 +6,6 @@
 #include <fstream>
 #include <vector>
 #include <dirent.h>
-#endif
 
 using namespace std;
 
