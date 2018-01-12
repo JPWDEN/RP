@@ -18,6 +18,8 @@ Parser::~Parser()
 {
 	if (m_inFile.is_open())
 		m_inFile.close();
+	if (m_outFile.is_open())
+		m_outFile.close();
 	delete m_arEmailData;
 }
 
