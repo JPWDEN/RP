@@ -25,7 +25,6 @@ Parser::~Parser()
 
 #ifdef _WIN32
 //Open each of the files in a directory and call ParseFile() for each file
-//Open each of the files in a directory and call ParseFile() for each file
 //Return value only serves as a placeholder for further error-checking functionality
 bool Parser::ParseDirectoryWin(string sInput)
 {
@@ -68,6 +67,7 @@ bool Parser::ParseDirectoryWin(string sInput)
 	return true;
 }
 #else
+//Open each of the files in a directory and call ParseFile() for each file
 bool Parser::ParseDirectory(string sInput)
 {
 	string sDir;
