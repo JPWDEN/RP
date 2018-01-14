@@ -129,7 +129,7 @@ bool Parser::ParseFile()
 }
 
 //Print all records that have been processed and added to Vector array
-void Parser::PrintData(bool bFile = true)
+void Parser::PrintData(bool bFile /* = true */)
 {
 	if (bFile)
 		for (vector<EMAIL_DATA>::const_iterator i = m_arEmailData->begin(); i != m_arEmailData->end(); i++)
