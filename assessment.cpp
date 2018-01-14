@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 		sInput = string(argv[1]);
 	rpParser.ParseDirectory(sInput);
-	rpParser.PrintData();
+	rpParser.PrintData(false);  //Print to screen
 	cout << "Finished!";
 
 	return 0;
