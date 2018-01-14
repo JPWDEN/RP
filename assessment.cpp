@@ -121,8 +121,7 @@ bool Parser::ParseFile()
 		if (sTo != "" && sFrom != "" && sDate != "" && sSubject != "" && sMID != "" && !bCheckSubject)
 			bAllFound = true;
 	}
-	m_arEmailData->push_back(EMAIL_DATA(sTo, sFrom, sDate, sSubject, sMID));
-	m_outFile << "To: " << sTo << endl << "From: " << sFrom << endl << "Date: " << sDate << endl << "Subject: " << sSubject << endl << "Message-ID: " << sMID << endl << endl;
+	//m_arEmailData->push_back(EMAIL_DATA(sTo, sFrom, sDate, sSubject, sMID));
 	if (bAllFound)
 		return true;
 	else
