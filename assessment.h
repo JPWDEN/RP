@@ -27,8 +27,8 @@ public:
 	~Parser();
 
 	bool ParseDirectory(string sInput);	//Grab files from specified directory--Windows
-	bool ParseFile();						//Process each file for requested data
-	void PrintData();						//Print email data contained in memory
+	bool ParseFile();			//Process each file for requested data
+	void PrintData(bool bFile = true);	//Print email data contained in memory to file or screen
 
 private:
 	ifstream			m_inFile;		//Used for file read operations
