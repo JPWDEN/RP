@@ -121,7 +121,7 @@ bool Parser::ParseFile()
 		if (sTo != "" && sFrom != "" && sDate != "" && sSubject != "" && sMID != "" && !bCheckSubject)
 			bAllFound = true;
 	}
-	//m_arEmailData->push_back(EMAIL_DATA(sTo, sFrom, sDate, sSubject, sMID));
+	m_arEmailData->push_back(EMAIL_DATA(sTo, sFrom, sDate, sSubject, sMID));
 	if (bAllFound)
 		return true;
 	else
@@ -129,11 +129,14 @@ bool Parser::ParseFile()
 }
 
 //Print all records that have been processed and added to Vector array
-void Parser::PrintData()
+void Parser::PrintData(bool bFile = true)
 {
-	for (vector<EMAIL_DATA>::const_iterator i = m_arEmailData->begin(); i != m_arEmailData->end(); i++)
-		cout << "To: " << i->sTo << endl << "From: " << i->sFrom << endl << "Date: " << i->sDate << endl 
-			 << "Subject: " << i->sSubject << endl << "Message-ID: " << i->sMID << endl << endl;
+	if (bFile)
+		m_outFile << "To: " << sTo << endl << "From: " << sFrom << endl << "Date: " << sDate << endl << "Subject: " << sSubject << endl << "Message-ID: " << sMID << endl << endl;
+	else
+		for (vector<EMAIL_DATA>::const_iterator i = m_arEmailData->begin(); i != m_arEmailData->end(); i++)
+			cout << "To: " << i->sTo << endl << "From: " << i->sFrom << endl << "Date: " << i->sDate << endl 
+			     << "Subject: " << i->sSubject << endl << "Message-ID: " << i->sMID << endl << endl;
 }
 
 
