@@ -16,16 +16,5 @@ RUN cat /RP-master/log
 
 
 
-
+#  Future option:  Create dockerfile configuration for Windows builds
 #FROM microsoft/windowsservercore
-
-# Install chocolatey
-#RUN @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1"
-
-#RUN choco install visualcpp-build-tools -version 14.0.25420.1 -y
-
-# Add msbuild to PATH
-#RUN setx /M PATH "%PATH%;C:\Program Files (x86)\MSBuild\14.0\bin"
-
-# Test msbuild can be accessed without path
-#RUN msbuild -version
