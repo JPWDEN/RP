@@ -28,7 +28,6 @@ Parser::~Parser()
 bool Parser::ParseDirectory(string sInput)
 {
 	string sDir;
-	m_outFile.open("/RP-master/log");
 	struct dirent *dirp;
 	struct stat fileStat;
 	if (sInput == "")
@@ -134,9 +133,12 @@ bool Parser::ParseFile()
 void Parser::PrintData(bool bFile /* = true */)
 {
 	if (bFile)
+	{
+		m_outFile.open("/RP-master/log");
 		for (vector<EMAIL_DATA>::const_iterator i = m_arEmailData->begin(); i != m_arEmailData->end(); i++)
 			m_outFile << "To: " << i->sTo << endl << "From: " << i->sFrom << endl << "Date: " << i->sDate << endl 
 			          << "Subject: " << i->sSubject << endl << "Message-ID: " << i->sMID << endl << endl;
+	}
 	else
 		for (vector<EMAIL_DATA>::const_iterator i = m_arEmailData->begin(); i != m_arEmailData->end(); i++)
 			cout << "To: " << i->sTo << endl << "From: " << i->sFrom << endl << "Date: " << i->sDate << endl 
