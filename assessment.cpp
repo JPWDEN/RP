@@ -23,6 +23,8 @@ Parser::~Parser()
 	delete m_arEmailData;
 }
 
+//Open each of the files in a directory and call ParseFile() for each file
+//Return value only serves as a placeholder for further error-checking functionality
 bool Parser::ParseDirectory(string sInput)
 {
 	string sDir;
