@@ -11,8 +11,8 @@ The above information parsed from each email is stored in a Vector array.  Publi
 
 compile:  g++ ./assessment.cpp -o assessment
 
-Usage:  ./assessment <path>
- Parser can be executed with no command line arguments.  In this case, Parser will attempt to scan for email files from the ./smallset/ path.  Alternatively, Parser can accept a single argument as a string containing the directory path where it should for email files to parse.
+Usage:  ./assessment (path)
+Parser can be executed with no command line arguments.  In this case, Parser will attempt to scan for email files from the ./smallset/ path.  Alternatively, Parser can accept a single argument as a string containing the directory path where it should for email files to parse.
 
 WindowsFiles Directory:  
 assessment_win.h and assessment_win.cpp contain the same definition of the Parser, but with the addition of a ParseDirectoryWin() method that utilizes Windows calls to traverse a directory of emails.  This Windows version of Parser also includes several preprocessor directives which alter what code is compiled, and could theoretically work on most Linux systems as well.
