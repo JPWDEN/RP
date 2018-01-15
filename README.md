@@ -21,7 +21,7 @@ assessment_win.h and assessment_win.cpp contain the same definition of the Parse
 DockerFiles Directory:
 The DockerFiles directory contains 2 files.  Dockerfile is the script for Docker, providing commands to start up a linux image, install necessary tools, download the source code from Github, compile, and run.  docker_compose.yml contains the configuration information, and any services needed for this project.  In this simple case, the compose file is only the version number and the image name used for the project.
 
-A huge thank you in advance for taking the time to look at the project and offer your consideration for this role.  I am incredibly excited about this opportunity and look forward to meeting some of the Return Path team in person.
+A huge thank you in advance for taking the time to look at this project and offer consider me for this role.  I am incredibly excited about this opportunity and look forward to meeting the Return Path team in person.
 
 Regards,
 Josh
