@@ -33,7 +33,7 @@ public:
 #ifdef _WIN32
 	bool ParseDirectoryWin(string sInput);		//Grab files from specified directory--Linux
 #else
-	bool ParseDirectoryWin(string sInput);	//Grab files from specified directory--Windows
+	bool ParseDirectory(string sInput);	//Grab files from specified directory--Windows
 #endif
 	bool ParseFile();						//Process each file for requested data
 	void PrintData(bool bFile = true);		//Print email data contained in memory
